@@ -28,12 +28,15 @@ public class RestController {
 		String decodeKey = "?serviceKey=c8FNtKVvzHDxyV1ZHHTtrWnPHnMvmY413zYxxjRk3F/E3vfy2Cay0Rq65JIdO8KLdcoCHFFACPRRT5qYQ4b1CA==";
 
 		String url = base + path + decodeKey;
-
+		
+		RestTemplate rest = new RestTemplate();
+		
+		RestVo vovo = rest.getForObject(url, RestVo.class);
 		
 		RestVo vo = rt.getForObject(url, RestVo.class);
 		
 		
-		return new ResponseEntity<>(vo,HttpStatus.ACCEPTED);
+		return new ResponseEntity<>(vovo,HttpStatus.ACCEPTED);
 	}
 
 }
